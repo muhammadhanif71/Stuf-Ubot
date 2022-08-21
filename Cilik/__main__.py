@@ -30,6 +30,7 @@ async def main():
             bot.me = await bot.get_me()
             await bot.join_chat("CilikProject")
             await bot.join_chat("CilikSupport")
+            await bot.join_chat("SharingUserbot")
             await bot.send_message(BOTLOG_CHATID, MSG_ON.format(BOT_VER))
         except Exception as a:
             LOGGER("main").warning(a)
