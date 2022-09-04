@@ -28,7 +28,7 @@ if not BLACKLIST_CHAT:
     BLACKLIST_CHAT = [-1001473548283, -1001687155877]
 BOTLOG_CHATID = int(getenv("BOTLOG_CHATID") or 0)
 BLACKLIST_GCAST = {int(x) for x in getenv("BLACKLIST_GCAST", "").split()}
-BOT_VER = "1.0@main"
+BOT_VER = "0.2.0@main"
 BRANCH = "main"
 CHANNEL = getenv("CHANNEL", "CilikProject")
 DB_URL = getenv("DATABASE_URL", "")
@@ -42,7 +42,6 @@ GROUP = getenv("GROUP", "CilikSupport")
 HEROKU_API_KEY = getenv("HEROKU_API_KEY", None)
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME", None)
 PMPERMIT_PIC = getenv("PMPERMIT_PIC", None)
-PM_AUTO_BAN = strtobool(getenv("PM_AUTO_BAN", "True"))
 
 STRING_SESSION1 = getenv("STRING_SESSION1", "")
 STRING_SESSION2 = getenv("STRING_SESSION2", "")
