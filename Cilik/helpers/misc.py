@@ -6,13 +6,13 @@
 # Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
 #
 # All rights reserved.
-# Cilik-PyroBot
 
 import asyncio
 import shlex
 import socket
 from typing import Tuple
 
+import dotenv
 import heroku3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError
@@ -67,12 +67,12 @@ def git():
         TEMP_REPO = REPO_LINK.split("https://")[1]
         UPSTREAM_REPO = f"https://{GIT_USERNAME}:{GIT_TOKEN}@{TEMP_REPO}"
     else:
-        UPSTREAM_REPO = CBHDSYS
+        UPSTREAM_REPO = REPO_URL
     try:
         repo = Repo()
-        LOGGER("Cilik").info(f"Git Client Found")
+        LOGGER("ProjectMan").info(f"Git Client Found")
     except GitCommandError:
-        LOGGER("Cilik").info(f"Invalid Git Command")
+        LOGGER("ProjectMan").info(f"Invalid Git Command")
     except InvalidGitRepositoryError:
         repo = Repo.init()
         if "origin" in repo.remotes:
@@ -87,7 +87,7 @@ def git():
         repo.heads[BRANCH].set_tracking_branch(origin.refs[BRANCH])
         repo.heads[BRANCH].checkout(True)
         try:
-            repo.create_remote("origin", CBHDSYS)
+            repo.create_remote("origin", REPO_URL)
         except BaseException:
             pass
         nrs = repo.remote("origin")
@@ -97,7 +97,7 @@ def git():
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -U -r requirements.txt")
-        LOGGER("Cilik").info("Fetched Latest Updates")
+        LOGGER("ProjectMan").info("Fetched Latest Updates")
 
 
 def is_heroku():
@@ -117,3 +117,28 @@ def heroku():
                 LOGGER("Heroku").info(
                     f"Pastikan HEROKU_API_KEY dan HEROKU_APP_NAME anda dikonfigurasi dengan benar di config vars heroku."
                 )
+
+
+async def in_heroku():
+    return "heroku" in socket.getfqdn()
+
+
+async def create_botlog(client):
+    if HAPP is None:
+        return
+    LOGGER("Cilik").info(
+        "TUNGGU SEBENTAR. SEDANG MEMBUAT GROUP LOG USERBOT UNTUK ANDA"
+    )
+    desc = "Group Log untuk Cilik-Ubot.\n\nHARAP JANGAN KELUAR DARI GROUP INI.\n\n⚡ Powered By ~ @CilikProject ⚡"
+    try:
+        gruplog = await client.create_supergroup("⚡ Cilik-Logs ⚡", desc)
+        if await in_heroku():
+            heroku_var = HAPP.config()
+            heroku_var["BOTLOG_CHATID"] = gruplog.id
+        else:
+            path = dotenv.find_dotenv("config.env")
+            dotenv.set_key(path, "BOTLOG_CHATID", gruplog.id)
+    except Exception:
+        LOGGER("Cilik").warning(
+            "var BOTLOG_CHATID kamu belum di isi. Buatlah grup telegram dan masukan bot @GreyCilik_bot lalu ketik /id Masukan id grup nya di var BOTLOG_CHATID"
+        )
