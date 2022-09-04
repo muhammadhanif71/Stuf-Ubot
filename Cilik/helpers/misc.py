@@ -70,9 +70,9 @@ def git():
         UPSTREAM_REPO = REPO_URL
     try:
         repo = Repo()
-        LOGGER("ProjectMan").info(f"Git Client Found")
+        LOGGER("Cilik").info(f"Git Client Found")
     except GitCommandError:
-        LOGGER("ProjectMan").info(f"Invalid Git Command")
+        LOGGER("Cilik").info(f"Invalid Git Command")
     except InvalidGitRepositoryError:
         repo = Repo.init()
         if "origin" in repo.remotes:
@@ -97,7 +97,7 @@ def git():
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -U -r requirements.txt")
-        LOGGER("ProjectMan").info("Fetched Latest Updates")
+        LOGGER("Cilik").info("Fetched Latest Updates")
 
 
 def is_heroku():
