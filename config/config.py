@@ -36,6 +36,7 @@ GROUP = getenv("GROUP", "CilikSupport")
 HEROKU_API_KEY = getenv("HEROKU_API_KEY", None)
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME", None)
 PMPERMIT_PIC = getenv("PMPERMIT_PIC", None)
+PM_AUTO_BAN = strtobool(getenv("PM_AUTO_BAN", "True"))
 
 STRING_SESSION1 = getenv("STRING_SESSION1", "")
 STRING_SESSION2 = getenv("STRING_SESSION2", "")
