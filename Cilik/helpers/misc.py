@@ -132,12 +132,14 @@ async def create_botlog(client):
     desc = "Group Log untuk Cilik-Ubot.\n\nHARAP JANGAN KELUAR DARI GROUP INI.\n\n⚡ Powered By ~ @CilikProject ⚡"
     try:
         gruplog = await client.create_supergroup("⚡ Cilik-Logs ⚡", desc)
+        gcid = int(str(f"{gruplog.id}"))
+        await client.set_chat_photo(gruplog.id, photo="Cilik/resources/Cilik.jpg")
         if await in_heroku():
             heroku_var = HAPP.config()
-            heroku_var["BOTLOG_CHATID"] = gruplog.id
+            heroku_var["BOTLOG_CHATID"] = gcid.id
         else:
             path = dotenv.find_dotenv("config.env")
-            dotenv.set_key(path, "BOTLOG_CHATID", gruplog.id)
+            dotenv.set_key(path, "BOTLOG_CHATID", gcid.id)
     except Exception:
         LOGGER("Cilik").warning(
             "var BOTLOG_CHATID kamu belum di isi. Buatlah grup telegram dan masukan bot @GreyCilik_bot lalu ketik /id Masukan id grup nya di var BOTLOG_CHATID"
