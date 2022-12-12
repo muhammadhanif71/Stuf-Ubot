@@ -1,9 +1,9 @@
 <h1 align="center"> 
-   🎈 Cilik-Ubot 🎈
+   🎈 Stuf 🎈
 </h1>
 
 <p align="center">
-  <a href="#"><img src="https://telegra.ph/file/d20fc177ac0cb0136d942.jpg" width="300" height="300"></a> </br>
+  <a href="#"><img src="https://telegra.ph/file/5c5911c3e5c8602832d8d.jpg" width="300" height="300"></a> </br>
 </p>
 
 ## Deploy With Heroku 💌
@@ -11,7 +11,6 @@
 <p align="left">
 <a href="https://telegram.dog/XTZ_HerokuBot?start=Z3JleTQyMy9DaWxpay1VYm90IG1haW4"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200""/</a>  
 
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/grey423/Cilik-Ubot/tree/main"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 ### Generate  String Sessions
 
 <p align="left">
@@ -34,6 +33,10 @@
 -  [ITZ-ZAID](https://github.com/ITZ-ZAID) : Zaid-UserBot
 -  [Tofikdn](https://github.com/tofikdn) : Tede
 -  [Toni](https://github.com/Toni880) : Prime-UserBot
+
+# Thanks Support
+
+- [Cilik-Ubot](https://github.com/grey423/Cilik-Ubot) : Cilik-Ubot
 
 ## 📑 License
 This repository is license under [GPL-3 License](https://github.com/grey423/Cilik-Ubot/blob/master/LICENSE)
